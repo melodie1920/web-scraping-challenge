@@ -54,6 +54,9 @@ def scrape():
     # Create dataframe of table
     mars_df = mars_facts[0]
 
+    # Set Index
+    mars_df.set_index(0, inplace=True)
+
     # Create HTML table / Convert dataframe to HTML
     mars_html_table = mars_df.to_html()
 
@@ -67,7 +70,5 @@ def scrape():
     mars["news_p"] = news_p
     mars["featured_image_url"] = featured_image_url
     mars["mars_facts"] = mars_html_table
-
-    print(mars)
 
     return mars
