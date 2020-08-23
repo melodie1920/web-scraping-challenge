@@ -35,7 +35,7 @@
       </div>
       <div class="col-lg-5">
         <h4 class="heading"><b>Mars Facts</b></h4>
-        <div ng-non-bindable><input value="{{mars.mars_facts}}"></div>
+        <div> {{ mars.mars_facts|safe}} </div>
       </div>
     </div>
 
