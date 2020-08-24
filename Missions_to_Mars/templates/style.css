@@ -1,0 +1,11 @@
+h4 {
+    font-weight: bold !important;
+}
+
+tr:nth-child(even) {
+  background-color:yellow !important;
+}
+
+table.dataframe {
+  text-align: center !important;
+}

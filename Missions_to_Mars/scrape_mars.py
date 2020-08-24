@@ -54,8 +54,11 @@ def scrape():
     # Create dataframe of table
     mars_df = mars_facts[0]
 
+    # Rename Columns
+    mars_df = mars_df.rename(columns={0:"Description", 1:"Mars"})
+
     # Set Index
-    mars_df.set_index(0, inplace=True)
+    mars_df.set_index("Description", inplace=True)
 
     # Create HTML table / Convert dataframe to HTML
     mars_html_table = mars_df.to_html()
@@ -64,11 +67,35 @@ def scrape():
     mars_html_table.replace('\n', '')
 
     # ------------------------------------------------------------------------------------------------
+    # Mars Hemispheres
+    browser_hemisphere = init_browser()
 
+    hemisphere_list = ['cerberus', 'schiaparelli', 'syrtis_major', 'valles_marineris']
+
+    hemisphere_image_urls = []
+
+    for x in hemisphere_list:
+        hemisphere_url = (f'https://astrogeology.usgs.gov/search/map/Mars/Viking/{x}_enhanced')
+        browser_hemisphere.visit(hemisphere_url)
+            
+        html_hemisphere = browser_hemisphere.html
+        soup_hemisphere = BeautifulSoup(html_hemisphere, 'html.parser')
+            
+        content = soup_hemisphere.find('div', class_='content')
+        title = content.find('h2').text
+        image_url = content.find('a')['href']
+        
+        hemisphere_image_urls.append({'title':title, 'img_url':image_url})
+
+    # Close the browser after scraping
+    browser_hemisphere.quit()
+
+    # ------------------------------------------------------------------------------------------------
     # Create final dictionary
     mars["news_title"] = news_title
     mars["news_p"] = news_p
     mars["featured_image_url"] = featured_image_url
     mars["mars_facts"] = mars_html_table
+    mars["hemisphere_image_urls"] = hemisphere_image_urls
 
     return mars

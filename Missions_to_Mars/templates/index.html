@@ -3,10 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+      tr:nth-child(odd) {background-color:rgb(233, 229, 229);}
+      table {font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:12px;width:350px;}
+      td {height: 30px;}
+    </style>
+  
 </head>
 
 <body>
@@ -17,9 +23,9 @@
     </div>
 
     <!-- Mars news data > -->
-    <div class="row" id="mars-news">
+    <div class="row">
       <div class="col-lg-12">
-        <h4 class="heading"><b>Latest Mars News</b></h4>
+        <h4>Latest Mars News</h4>
         <medium><b>{{mars.news_title}}</b><medium>
         <br>
         <small>{{mars.news_p}}</small>
@@ -28,17 +34,32 @@
 
     <br>
 
-    <div class="row" id="mars-news">
-      <div class="col-lg-7">
-        <h4 class="heading"><b>Featured Mars Image</b></h4>
-        <img src="{{ mars.featured_image_url }}" alt="Mars Featured Image" width=600px height=400px>
+    <div class="row">
+      <div class="col-lg-8">
+        <h4>Featured Mars Image</h4>
+        <img src="{{ mars.featured_image_url }}" alt="Mars Featured Image" width=700px height=500px>
       </div>
-      <div class="col-lg-5">
-        <h4 class="heading"><b>Mars Facts</b></h4>
+      <div class="col-lg-4">
+        <h4>Mars Facts</h4>
         <div> {{ mars.mars_facts|safe}} </div>
       </div>
     </div>
 
+    <br>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h4 class="heading"><center>Mars Hemispheres</center></h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        
+        {{ mars.hemisphere_image_urls[0]}}
+
+      </div>
+    </div>
 
 </body>
 
