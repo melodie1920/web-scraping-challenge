@@ -83,7 +83,10 @@ def scrape():
             
         content = soup_hemisphere.find('div', class_='content')
         title = content.find('h2').text
-        image_url = content.find('a')['href']
+        
+        container = soup_hemisphere.find('div', class_='container')
+        image_url = container.find('img', class_='wide-image')['src']
+        image_url = (f'https://astrogeology.usgs.gov{image_url}')
         
         hemisphere_image_urls.append({'title':title, 'img_url':image_url})
 
