@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Mission to Mars</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <style>
       tr:nth-child(odd) {background-color:rgb(233, 229, 229);}
       table {font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:12px;width:350px;}
       td {height: 30px;}
+      h4 {font-weight: bold !important;}
+      h5 {font-weight: bold !important;}
     </style>
   
 </head>
@@ -49,14 +50,13 @@
 
     <div class="row">
       <div class="col-lg-12">
-        <h4 class="heading"><center>Mars Hemispheres</center></h4>
+        <h4 class="heading">Mars Hemispheres</h4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-6">
-        
-        {{ mars.hemisphere_image_urls[0]}}
+        <h5>{{ mars.hemisphere_image_urls[0]['title']}}</h5>
 
       </div>
     </div>
