@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 from splinter import Browser
 import pandas as pd
+import time
 
 def init_browser():
     executable_path = {"executable_path": "chromedriver.exe"}
@@ -15,6 +16,8 @@ def scrape():
 
     news_url = 'https://mars.nasa.gov/news'
     browser_news.visit(news_url)
+
+    time.sleep(1)
 
     # Find news title and news snippet paragraph
     html_news = browser_news.html
